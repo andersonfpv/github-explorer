@@ -13,6 +13,12 @@ const repository = {
 
 export function RepositoryList() {
     const [repositories, setRepositories] = useState([]);
+
+    useEffect(() => {
+        fetch('https://api.github.com/orgs/rocktseat/repos')
+            .then(response => response.json())
+            .then(data => setRepositories(data))
+    }, [repositories])
     return (
         <section className="repository-list">
             <h1>Lista de repositórios</h1>
